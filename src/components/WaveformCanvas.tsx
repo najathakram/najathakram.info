@@ -32,59 +32,53 @@ export function WaveformCanvas() {
     const ro = new ResizeObserver(resize);
     ro.observe(canvas);
 
-    // Three superposed sinusoids — a quiet nod to multi-tone DSP.
+    let visible = true;
+    const io = new IntersectionObserver(
+      (entries) => {
+        visible = entries[0]?.isIntersecting ?? true;
+      },
+      { threshold: 0 }
+    );
+    io.observe(canvas);
+
+    // Two low, slow carriers. A quiet line, mostly sitting still.
     const carriers = [
-      { freq: 0.0042, amp: 0.34, phase: 0, speed: 0.00045, weight: 1.0 },
-      { freq: 0.0098, amp: 0.18, phase: 1.7, speed: 0.00075, weight: 0.7 },
-      { freq: 0.022, amp: 0.07, phase: 3.1, speed: 0.0011, weight: 0.45 },
+      { freq: 0.0036, amp: 0.55, phase: 0, speed: 0.00022 },
+      { freq: 0.0091, amp: 0.28, phase: 2.1, speed: 0.00038 },
     ];
 
+    let lastT = 0;
     const draw = (t: number) => {
+      if (!visible || t - lastT < 33) {
+        raf = requestAnimationFrame(draw);
+        return;
+      }
+      lastT = t;
+
       ctx.clearRect(0, 0, width, height);
 
-      const midY = height * 0.5;
-      const baseAmp = Math.min(height * 0.42, 220);
+      const baseY = height * 0.72;
+      const amplitude = Math.min(height * 0.06, 40);
 
-      // Faint reference axis.
-      ctx.strokeStyle = "rgba(244, 241, 234, 0.05)";
-      ctx.lineWidth = 1;
       ctx.beginPath();
-      ctx.moveTo(0, midY);
-      ctx.lineTo(width, midY);
-      ctx.stroke();
+      ctx.strokeStyle = "rgba(201, 168, 118, 0.55)";
+      ctx.lineWidth = 1;
+      ctx.lineJoin = "round";
+      ctx.lineCap = "round";
 
-      // Composite waveform pass.
-      const passes = [
-        { offset: 0, alpha: 0.85, lineWidth: 1.4, color: "rgba(201, 168, 118, 1)" },
-        { offset: 6, alpha: 0.22, lineWidth: 1.1, color: "rgba(201, 168, 118, 0.55)" },
-        { offset: -6, alpha: 0.18, lineWidth: 1.1, color: "rgba(120, 160, 220, 0.5)" },
-      ];
-
-      passes.forEach((pass) => {
-        ctx.beginPath();
-        ctx.globalAlpha = pass.alpha;
-        ctx.strokeStyle = pass.color;
-        ctx.lineWidth = pass.lineWidth;
-        ctx.lineJoin = "round";
-        ctx.lineCap = "round";
-
-        for (let x = 0; x <= width; x += 2) {
-          let y = 0;
-          for (const c of carriers) {
-            const phase = c.phase + (reduceMotion ? 0 : t * c.speed);
-            y += Math.sin(x * c.freq + phase) * c.amp * c.weight;
-          }
-          // Envelope — taper toward edges for an editorial feel.
-          const norm = x / width;
-          const env = Math.sin(Math.PI * norm) ** 1.4;
-          const yPx = midY + y * baseAmp * env + pass.offset;
-          if (x === 0) ctx.moveTo(x, yPx);
-          else ctx.lineTo(x, yPx);
+      for (let x = 0; x <= width; x += 2) {
+        let y = 0;
+        for (const c of carriers) {
+          const phase = c.phase + (reduceMotion ? 0 : t * c.speed);
+          y += Math.sin(x * c.freq + phase) * c.amp;
         }
-        ctx.stroke();
-      });
-
-      ctx.globalAlpha = 1;
+        const norm = x / width;
+        const env = Math.sin(Math.PI * norm) ** 1.2;
+        const yPx = baseY + y * amplitude * env;
+        if (x === 0) ctx.moveTo(x, yPx);
+        else ctx.lineTo(x, yPx);
+      }
+      ctx.stroke();
 
       raf = requestAnimationFrame(draw);
     };
@@ -94,6 +88,7 @@ export function WaveformCanvas() {
     return () => {
       cancelAnimationFrame(raf);
       ro.disconnect();
+      io.disconnect();
     };
   }, []);
 
@@ -101,11 +96,9 @@ export function WaveformCanvas() {
     <div className="pointer-events-none absolute inset-0 overflow-hidden">
       <canvas
         ref={canvasRef}
-        className="w-full h-full opacity-90"
+        className="w-full h-full"
         aria-hidden="true"
       />
-      <div className="absolute inset-0 bg-[linear-gradient(to_bottom,var(--background)_0%,transparent_18%,transparent_82%,var(--background)_100%)]" />
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,var(--background)_0%,transparent_8%,transparent_92%,var(--background)_100%)]" />
     </div>
   );
 }

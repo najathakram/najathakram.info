@@ -25,11 +25,11 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.najathakram.info"),
   title: {
-    default: "Najath Akram, Ph.D. — Signal Processing & Wireless Systems",
-    template: "%s — Najath Akram",
+    default: "Najath Akram",
+    template: "%s · Najath Akram",
   },
   description:
-    "Ph.D. signal processing engineer building the physical layer of 5G, 6G, and O-RAN. Phased arrays, digital beamforming, and AI for wireless systems.",
+    "Najath Akram is a signal processing engineer at Airspan Networks, working on the physical layer of wireless systems. O-RAN, 5G, 6G, and careful applications of machine learning.",
   keywords: [
     "Najath Akram",
     "Signal Processing",
@@ -46,18 +46,18 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Najath Akram" }],
   openGraph: {
-    title: "Najath Akram, Ph.D.",
+    title: "Najath Akram",
     description:
-      "Signal processing, O-RAN, and wireless systems. Building the physical layer of 5G and 6G.",
+      "Signal processing engineer. O-RAN, 5G, and the physical layer of wireless.",
     url: "https://www.najathakram.info",
     siteName: "Najath Akram",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Najath Akram, Ph.D.",
+    title: "Najath Akram",
     description:
-      "Signal processing, O-RAN, and wireless systems. Building the physical layer of 5G and 6G.",
+      "Signal processing engineer. O-RAN, 5G, and the physical layer of wireless.",
   },
 };
 

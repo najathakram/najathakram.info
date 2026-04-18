@@ -5,45 +5,32 @@ import { expertise } from "../lib/site-data";
 export function Expertise() {
   return (
     <Section
-      id="expertise"
-      index="/ 03"
-      eyebrow="Expertise"
+      id="work"
+      eyebrow="What I work on"
       title={
         <>
-          Three disciplines, one
-          <span className="font-display italic text-foreground"> physical layer</span>.
+          Three threads, all running through the
+          <span className="font-display italic"> physical layer</span>.
         </>
       }
     >
-      <div className="grid gap-px bg-border md:grid-cols-3 border border-border">
+      <div className="divide-y divide-border border-t border-b border-border">
         {expertise.map((pillar, idx) => (
           <Reveal
             key={pillar.id}
-            delay={idx * 120}
-            className="bg-background p-8 sm:p-10 lg:p-12 group panel-hover transition-colors"
+            delay={idx * 90}
+            className="grid gap-8 py-12 sm:py-14 lg:grid-cols-12 lg:gap-16"
           >
-            <div className="flex items-start justify-between mb-8">
-              <span className="font-mono-tabular text-xs tracking-[0.25em] text-accent">
-                {pillar.label}
-              </span>
-              <span className="h-1.5 w-1.5 rounded-full bg-accent/40 group-hover:bg-accent transition-colors" />
+            <div className="lg:col-span-4">
+              <h3 className="font-display text-3xl sm:text-[2.25rem] leading-tight text-foreground text-balance">
+                {pillar.title}
+              </h3>
             </div>
-            <h3 className="font-display text-2xl sm:text-3xl text-foreground mb-5 text-balance">
-              {pillar.title}
-            </h3>
-            <p className="text-muted-strong text-pretty leading-relaxed mb-8">
-              {pillar.body}
-            </p>
-            <ul className="flex flex-wrap gap-1.5">
-              {pillar.keywords.map((kw) => (
-                <li
-                  key={kw}
-                  className="text-[11px] tracking-wide text-muted border border-border rounded-full px-2.5 py-1 font-mono-tabular"
-                >
-                  {kw}
-                </li>
-              ))}
-            </ul>
+            <div className="lg:col-span-8">
+              <p className="text-lg leading-relaxed text-muted-strong text-pretty">
+                {pillar.body}
+              </p>
+            </div>
           </Reveal>
         ))}
       </div>
