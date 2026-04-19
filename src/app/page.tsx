@@ -3,6 +3,7 @@ import { About } from "../components/About";
 import { Expertise } from "../components/Expertise";
 import { Experience } from "../components/Experience";
 import { Publications } from "../components/Publications";
+import { Aside } from "../components/Aside";
 import { Contact } from "../components/Contact";
 import { profile } from "../lib/site-data";
 
@@ -25,6 +26,7 @@ export default function Home() {
           <Expertise />
           <Experience />
           <Publications />
+          <Aside />
           <Contact />
         </div>
       </main>

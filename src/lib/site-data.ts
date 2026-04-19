@@ -160,3 +160,57 @@ export const recognition = [
   "MathWorks intern hackathon, two awards (2019)",
   "Research contributor, DARPA and NSF funded programs",
 ];
+
+export type Lyric = {
+  title: string;
+  titleNative?: string;
+  artist: string;
+  year: string;
+  url: string;
+};
+
+export const lyrics: Lyric[] = [
+  {
+    title: "Katahada",
+    titleNative: "\u0d9a\u0da7\u0dc4\u0da9",
+    artist: "Nilakshi Dinusha Perera",
+    year: "2021",
+    url: "https://www.youtube.com/watch?v=7eozsk1uWxk",
+  },
+  {
+    title: "Ramalanaye Sanda",
+    titleNative: "\u0dbb\u0dcf\u0db8\u0dbd\u0dcf\u0db1\u0dba\u0dda \u0dc3\u0daf",
+    artist: "Dushani Madhushika",
+    year: "2020",
+    url: "https://www.youtube.com/watch?v=tBj98Ph_dg4",
+  },
+  {
+    title: "Yuganthaya",
+    titleNative: "\u0dba\u0dd4\u0d9c\u0dcf\u0db1\u0dca\u0dad\u0dba",
+    artist: "Gihan Dhanushka",
+    year: "2020",
+    url: "https://www.youtube.com/watch?v=w0MGP3iKVb0",
+  },
+  {
+    title: "Midunu Seethala Hima Piyallaka",
+    titleNative: "\u0db8\u0dd2\u0daf\u0dd4\u0dab\u0dd4 \u0dc3\u0dd3\u0dad\u0dbd \u0dc4\u0dd2\u0db8 \u0db4\u0dd2\u0dba\u0dbd\u0dca\u0dbd\u0d9a",
+    artist: "Harshana Disanayake",
+    year: "2020",
+    url: "https://www.youtube.com/watch?v=nDG4PU9ZLZ0",
+  },
+  {
+    title: "Disi Rana Liya Sadisi",
+    titleNative: "\u0daf\u0dd2\u0dc3\u0dd2 \u0dbb\u0db1 \u0dbd\u0dd2\u0dba \u0dc3\u0daf\u0dd2\u0dc3\u0dd2",
+    artist: "Harshana Disanayake",
+    year: "2020",
+    url: "https://www.youtube.com/watch?v=eqj8pKyOMls",
+  },
+];
+
+export type Photo = {
+  src: string;
+  alt: string;
+  caption?: string;
+};
+
+export const photos: Photo[] = [];
