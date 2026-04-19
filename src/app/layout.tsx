@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Instrument_Serif, JetBrains_Mono } from "next/font/google";
+import { Inter, Instrument_Serif } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
@@ -16,12 +16,6 @@ const instrumentSerif = Instrument_Serif({
   display: "swap",
 });
 
-const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-jetbrains-mono",
-  subsets: ["latin"],
-  display: "swap",
-});
-
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.najathakram.info"),
   title: {
@@ -29,7 +23,7 @@ export const metadata: Metadata = {
     template: "%s · Najath Akram",
   },
   description:
-    "Najath Akram is a signal processing engineer at Airspan Networks, working on the physical layer of wireless systems. O-RAN, 5G, 6G, and careful applications of machine learning.",
+    "Najath Akram is a signal processing engineer working on the physical layer of wireless systems. O-RAN, 5G, 6G, and careful applications of machine learning.",
   keywords: [
     "Najath Akram",
     "Signal Processing",
@@ -69,9 +63,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${instrumentSerif.variable} ${jetbrainsMono.variable} h-full antialiased`}
+      className={`${inter.variable} ${instrumentSerif.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-background text-foreground grain">
+      <body className="min-h-full bg-background text-foreground">
         {children}
       </body>
     </html>

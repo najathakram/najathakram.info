@@ -6,27 +6,34 @@ export const profile = {
   linkedin: "https://www.linkedin.com/in/najath",
   scholar: "https://scholar.google.com/citations?user=najath",
   ieee: "https://ieeexplore.ieee.org/author/37086418999",
-  short: "Signal processing engineer at Airspan Networks.",
+  role: "Signal processing engineer",
+  short: "I work on the physical layer of wireless systems.",
   intro:
     "I work on the physical layer of wireless systems. The part of a radio where information becomes electromagnetic waves and, with a bit of luck, becomes information again on the other end. These days that means O\u2011RAN, 5G, some early 6G, and a careful amount of machine learning where it earns its keep.",
 };
 
+export const focusAreas = [
+  "Digital signal processing",
+  "O\u2011RAN, 5G, 6G physical layer",
+  "Machine learning for wireless",
+];
+
 export const expertise = [
   {
     id: "dsp",
-    title: "Signal Processing",
+    title: "Signal processing",
     body:
       "Digital beamforming, phased arrays, and the quiet art of doing more with fewer ADCs. A good portion of my PhD was spent convincing receivers to resolve more information than they had hardware for, using multidimensional signal processing and approximate FFTs.",
   },
   {
     id: "oran",
-    title: "O\u2011RAN and 5G / 6G",
+    title: "O\u2011RAN, 5G and 6G",
     body:
       "Digital front ends, crest factor reduction, EVM, PIM, and the rest of the acronyms that make up a modern O\u2011RAN remote radio. I spend most of my days here. If something about a waveform looks wrong on a spectrum analyzer, it usually becomes my afternoon.",
   },
   {
     id: "ai",
-    title: "Machine Learning, Applied Carefully",
+    title: "Machine learning, applied carefully",
     body:
       "Machine learning for wireless, mostly model\u2011driven. I like the parts where data and physics meet: where a learned model respects the structure we already know, and saves us from having to pretend it doesn\u2019t.",
   },

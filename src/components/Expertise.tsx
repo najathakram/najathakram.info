@@ -1,39 +1,26 @@
-import { Section } from "./Section";
 import { Reveal } from "./Reveal";
 import { expertise } from "../lib/site-data";
 
 export function Expertise() {
   return (
-    <Section
-      id="work"
-      eyebrow="What I work on"
-      title={
-        <>
-          Three threads, all running through the
-          <span className="font-display italic"> physical layer</span>.
-        </>
-      }
-    >
-      <div className="divide-y divide-border border-t border-b border-border">
+    <section id="work" className="scroll-mt-16">
+      <Reveal>
+        <p className="text-[10px] uppercase tracking-[0.24em] text-muted mb-8">
+          What I work on
+        </p>
+      </Reveal>
+      <ul className="space-y-10">
         {expertise.map((pillar, idx) => (
-          <Reveal
-            key={pillar.id}
-            delay={idx * 90}
-            className="grid gap-8 py-12 sm:py-14 lg:grid-cols-12 lg:gap-16"
-          >
-            <div className="lg:col-span-4">
-              <h3 className="font-display text-3xl sm:text-[2.25rem] leading-tight text-foreground text-balance">
-                {pillar.title}
-              </h3>
-            </div>
-            <div className="lg:col-span-8">
-              <p className="text-lg leading-relaxed text-muted-strong text-pretty">
-                {pillar.body}
-              </p>
-            </div>
+          <Reveal as="li" key={pillar.id} delay={idx * 80} className="space-y-3">
+            <h3 className="font-display text-xl sm:text-2xl text-foreground leading-tight">
+              {pillar.title}
+            </h3>
+            <p className="text-base sm:text-lg leading-relaxed text-muted-strong text-pretty">
+              {pillar.body}
+            </p>
           </Reveal>
         ))}
-      </div>
-    </Section>
+      </ul>
+    </section>
   );
 }
