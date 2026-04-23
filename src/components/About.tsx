@@ -25,6 +25,11 @@ export function About() {
             the physics. I keep a reading list, a running simulation, and a
             sense of humour about the field, in roughly that order.
           </p>
+          <p>
+            Outside the lab, my wife Maznah and I run a small wedding
+            photography studio in Houston called Pixel Parchment, which keeps
+            me holding a camera more often than an oscilloscope probe.
+          </p>
         </div>
       </Reveal>
     </section>

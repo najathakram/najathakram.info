@@ -211,6 +211,47 @@ export type Photo = {
   src: string;
   alt: string;
   caption?: string;
+  category: "weddings" | "nature" | "urban";
 };
 
-export const photos: Photo[] = [];
+export const photos: Photo[] = [
+  {
+    src: "/photos/wedding-01.jpg",
+    alt: "South Asian wedding ceremony, white curtains and florals",
+    category: "weddings",
+  },
+  {
+    src: "/photos/nature-01.jpg",
+    alt: "Steller sea lions hauled out on an Alaskan rock",
+    category: "nature",
+  },
+  {
+    src: "/photos/urban-01.jpg",
+    alt: "New York City skyline at dusk",
+    category: "urban",
+  },
+  {
+    src: "/photos/wedding-02.jpg",
+    alt: "Couple walking in a snowy mountain landscape",
+    category: "weddings",
+  },
+  {
+    src: "/photos/nature-02.jpg",
+    alt: "Salmon run at Solomon Gulch Hatchery, Valdez",
+    category: "nature",
+  },
+  {
+    src: "/photos/urban-02.jpg",
+    alt: "Golden Gate Bridge, San Francisco",
+    category: "urban",
+  },
+];
+
+export type PhotoSource = { label: string; href: string; note?: string };
+
+export const photoSources: PhotoSource[] = [
+  { label: "Pixel Parchment", href: "https://www.pixelparchment.com", note: "weddings" },
+  { label: "@nj_a_nature", href: "https://www.instagram.com/nj_a_nature", note: "nature" },
+  { label: "@nj_a_urban", href: "https://www.instagram.com/nj_a_urban", note: "urban" },
+  { label: "@najath_akram", href: "https://www.instagram.com/najath_akram", note: "more" },
+];

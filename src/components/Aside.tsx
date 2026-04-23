@@ -1,5 +1,5 @@
 import { Reveal } from "./Reveal";
-import { lyrics, photos } from "../lib/site-data";
+import { lyrics, photos, photoSources } from "../lib/site-data";
 import { ArrowUpRight } from "lucide-react";
 
 export function Aside() {
@@ -11,7 +11,8 @@ export function Aside() {
         </p>
         <p className="text-base sm:text-lg leading-relaxed text-muted-strong text-pretty max-w-prose">
           Outside of the lab, I write the occasional Sinhala song lyric, and I
-          take photographs when the light cooperates. A small selection.
+          keep a camera close. My wife Maznah and I also run a small wedding
+          photography studio in Houston. A small selection below.
         </p>
       </Reveal>
 
@@ -67,6 +68,20 @@ export function Aside() {
                   loading="lazy"
                   className="w-full h-full object-cover transition-transform duration-500 hover:scale-[1.02]"
                 />
+              </a>
+            ))}
+          </div>
+          <div className="pt-5 flex flex-wrap gap-x-5 gap-y-2 text-sm text-muted">
+            {photoSources.map((s) => (
+              <a
+                key={s.href}
+                href={s.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1 hover:text-accent transition-colors"
+              >
+                {s.label}
+                <ArrowUpRight className="h-3.5 w-3.5" strokeWidth={1.5} />
               </a>
             ))}
           </div>
