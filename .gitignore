@@ -39,3 +39,32 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Full-size photo originals pulled off Instagram, kept locally so the published
+# set can be re-picked without repeating the harvest (see .claude/photo-sources.md).
+# Too large to commit; only the re-encoded public/photos/ frames ship.
+/instagram-originals/
+
+# NEVER COMMIT THESE. The `origin` remote (github.com/najathakram/najathakram.info)
+# is PUBLIC, and both directories below contain material that must not be.
+#
+# /Visa/     scanned passports and visa application forms for named family
+#            members. Committing this would publish other people's identity
+#            documents on the open internet. Verified 2026-08-11 as never having
+#            been committed in any branch; keep it that way.
+# /Resume/   resume source documents and PROJECTS.md, which describes internal
+#            employer work in detail. The entire point of this site's editing
+#            rules is that this material stays off the public record. The two
+#            resume PDFs that are MEANT to be public live in public/resume/.
+/Visa/
+/Resume/
+
+# Also public-repo unsafe, for the same reason. These working documents quote the
+# internal detail the site itself deliberately omits: named interop partners,
+# the CFR deliverable, and unpublished measurement figures. Scanned 2026-08-11.
+# `.claude/code-map/`, `review-panel.md` and `photo-sources.md` are safe and DO
+# ship, since they describe the site rather than the employer's work.
+/.claude/panel-reviews/
+/.claude/pipeline/
+
+.vercel

@@ -1,0 +1,8 @@
+{
+  "mappedSha": "d601de1ce7f34380623788c313d5e9e321d6c159",
+  "generatedAt": "2026-08-06",
+  "areas": ["site"],
+  "fileCount": 26,
+  "schemaVersion": 1,
+  "note": "Mapped with substantial uncommitted working-tree changes: the rebuild through the multipage build (data layer v2 with pageIntros/readouts/notes, SiteHeader + SiteFooter shell, PageHeader/Section primitives, nine routes replacing the one-page sidebar layout, OG image + icons, robots/sitemap, three-tier token scaffold). All per-section components (Sidebar, About, Aside, Contact, Experience, Expertise, Publications, Systems) are deleted; pages compose the primitives directly. Reconcile mappedSha after the next commit."
+}

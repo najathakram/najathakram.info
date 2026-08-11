@@ -1,32 +1,112 @@
 @import "tailwindcss";
 
+/* ------------------------------------------------------------------ */
+/* TIER 1 - primitives. The single block a visual direction edits.    */
+/* Committed world: the canon played straight at linear.app craft     */
+/* level, light only. Warm-neutral ground, never cream.               */
+/* ------------------------------------------------------------------ */
 :root {
-  --background: #f7f3ea;
-  --background-elev: #f1ecdf;
-  --foreground: #1a1714;
-  --muted: #7a7468;
-  --muted-strong: #3a3631;
-  --border: rgba(26, 23, 20, 0.09);
-  --border-strong: rgba(26, 23, 20, 0.18);
-  --accent: #2d4a6b;
-  --accent-soft: rgba(45, 74, 107, 0.10);
+  /* ground and ink */
+  --ground: #fcfcfb;
+  --ground-raised: #f5f5f3;
+  --ground-sunk: #efefec;
+  --ink: #16181d;
+  --ink-muted: #6a6e76;
+  /* 4.7:1 on the ground. The previous #8e9299 was 3.04:1 and carried
+     body-size venue text, so it failed the AA floor. */
+  --ink-soft: #6e727a;
+  --line: rgba(22, 24, 29, 0.09);
+  --line-strong: rgba(22, 24, 29, 0.16);
+  --accent: #1b5e8c;
+  --accent-hover: #164b70;
+  --accent-soft: rgba(27, 94, 140, 0.08);
+
+  /* type scale */
+  --step--2: 0.6875rem;
+  --step--1: 0.8125rem;
+  /* UI chrome step: nav links, footer links, buttons. Sits deliberately
+     between --step--1 and --step-0, where 16px reads oversized in a 56px
+     header and 13px reads undersized. */
+  --step-ui: 0.875rem;
+  --step-0: 1rem;
+  --step-1: 1.0625rem;
+  --step-2: 1.25rem;
+  --step-3: clamp(1.375rem, 1.2rem + 0.8vw, 1.75rem);
+  --step-4: clamp(1.75rem, 1.4rem + 1.6vw, 2.5rem);
+  --step-5: clamp(2.25rem, 1.7rem + 2.6vw, 3.5rem);
+  /* Display step, added for the home hero only: type as an event. Nothing
+     else on the site is allowed to reach this size. */
+  --step-6: clamp(2.75rem, 1.6rem + 5vw, 5.25rem);
+  --tracking-label: 0.14em;
+  --tracking-tight: -0.02em;
+  --tracking-display: -0.035em;
+
+  /* spacing rhythm, 4px base */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-24: 6rem;
+
+  /* motion: short and precise, per the craft bar */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --duration-fast: 140ms;
+  --duration-base: 200ms;
+  --duration-reveal: 480ms;
+  --reveal-distance: 8px;
+
+  /* form */
+  --radius: 6px;
+  --radius-lg: 10px;
+  --measure: 68ch;
+
+  /* Elevation. Two steps only, both barely there: this is the craft bar's
+     actual signature, a surface that lifts rather than a drop shadow. */
+  --shadow-raised: 0 1px 2px rgba(22, 24, 29, 0.04),
+    0 4px 12px rgba(22, 24, 29, 0.05);
+  --shadow-lifted: 0 2px 4px rgba(22, 24, 29, 0.05),
+    0 10px 28px rgba(22, 24, 29, 0.09);
 }
 
+/* ------------------------------------------------------------------ */
+/* TIER 2 - semantic mapping. Components use these utilities only,    */
+/* never raw hex.                                                     */
+/* ------------------------------------------------------------------ */
 @theme inline {
-  --color-background: var(--background);
-  --color-background-elev: var(--background-elev);
-  --color-foreground: var(--foreground);
-  --color-muted: var(--muted);
-  --color-muted-strong: var(--muted-strong);
-  --color-border: var(--border);
-  --color-border-strong: var(--border-strong);
+  --color-ground: var(--ground);
+  --color-ground-raised: var(--ground-raised);
+  --color-ground-sunk: var(--ground-sunk);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-ink-soft: var(--ink-soft);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
   --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
   --color-accent-soft: var(--accent-soft);
-  --font-sans: var(--font-inter);
-  --font-serif: var(--font-instrument-serif);
-  --font-mono: var(--font-jetbrains-mono);
+
+  /* legacy aliases so existing components keep compiling */
+  --color-background: var(--ground);
+  --color-foreground: var(--ink);
+  --color-muted: var(--ink-muted);
+  --color-muted-strong: var(--ink-muted);
+  --color-border: var(--line);
+  --color-border-strong: var(--line-strong);
+
+  --font-sans: var(--font-sans-var);
+  --font-mono: var(--font-mono-var);
+
+  --radius-DEFAULT: var(--radius);
 }
 
+/* ------------------------------------------------------------------ */
+/* TIER 3 - behavior.                                                 */
+/* ------------------------------------------------------------------ */
 @layer base {
   html {
     -webkit-font-smoothing: antialiased;
@@ -35,32 +115,63 @@
     scroll-behavior: smooth;
   }
 
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
   body {
-    background: var(--background);
-    color: var(--foreground);
-    font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--font-sans-var), ui-sans-serif, system-ui, sans-serif;
+    font-size: var(--step-1);
+    line-height: 1.65;
     font-feature-settings: "ss01", "cv11";
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    letter-spacing: var(--tracking-tight);
+    line-height: 1.15;
+    font-weight: 560;
+  }
+
+  /* Focus is a first-class state at this craft level. */
+  /* No border-radius here: the outline already follows each element's own
+     radius, and forcing one would square off the 6px controls. */
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
   }
 
   ::selection {
     background: var(--accent-soft);
-    color: var(--foreground);
-  }
-
-  h1, h2, h3, h4 {
-    letter-spacing: -0.015em;
+    color: var(--ink);
   }
 
   a {
-    text-decoration-color: var(--border-strong);
-    text-underline-offset: 3px;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  /* Numerals in measured values must not jitter between rows. */
+  .tabular,
+  time {
+    font-variant-numeric: tabular-nums;
   }
 }
 
 @layer utilities {
-  .font-display {
-    font-family: var(--font-serif), ui-serif, Georgia, serif;
-    font-feature-settings: "liga", "dlig";
+  .font-mono-fig {
+    font-family: var(--font-mono-var), ui-monospace, monospace;
+    font-feature-settings: "tnum";
+  }
+
+  .measure {
+    max-width: var(--measure);
   }
 
   .text-balance {
@@ -71,28 +182,129 @@
     text-wrap: pretty;
   }
 
-  .reveal {
-    opacity: 0;
-    transform: translateY(10px);
-    transition: opacity 700ms cubic-bezier(0.22, 1, 0.36, 1),
-      transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
-  }
-
-  .reveal.in {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  .anim-fade-in {
-    animation: fadeIn 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
-  }
-
-  @keyframes fadeIn {
-    from {
+  /* Line figures that draw themselves when scrolled into view.
+     Default state is fully drawn, so no JavaScript and no motion preference
+     both mean "already there" rather than "invisible". Only when the observer
+     has NOT yet fired (.figure without .drawn) do the strokes hide. */
+  @media (prefers-reduced-motion: no-preference) {
+    .figure:not(.drawn) [class^="draw-"],
+    .figure:not(.drawn) [class*=" draw-"] {
+      stroke-dasharray: var(--draw-len, 600);
+      stroke-dashoffset: var(--draw-len, 600);
       opacity: 0;
-      transform: translateY(6px);
     }
-    to {
+
+    .figure:not(.drawn) [class^="draw-"] circle,
+    .figure:not(.drawn) [class*=" draw-"] circle {
+      opacity: 0;
+    }
+
+    .figure.drawn [class^="draw-"],
+    .figure.drawn [class*=" draw-"] {
+      animation: drawIn 1100ms var(--ease-out) both;
+      animation-delay: calc(var(--draw-delay, 0ms) + var(--draw-step, 0ms));
+    }
+
+    .figure.drawn .draw-1 {
+      --draw-step: 0ms;
+    }
+    .figure.drawn .draw-2 {
+      --draw-step: 260ms;
+    }
+    .figure.drawn .draw-3 {
+      --draw-step: 520ms;
+    }
+    .figure.drawn .draw-4 {
+      --draw-step: 760ms;
+    }
+
+    @keyframes drawIn {
+      from {
+        stroke-dasharray: var(--draw-len, 600);
+        stroke-dashoffset: var(--draw-len, 600);
+        opacity: 0;
+      }
+      12% {
+        opacity: 1;
+      }
+      to {
+        stroke-dasharray: var(--draw-len, 600);
+        stroke-dashoffset: 0;
+        opacity: 1;
+      }
+    }
+  }
+
+  /* A surface that lifts on hover. The one interactive card recipe. */
+  .lift {
+    box-shadow: var(--shadow-raised);
+    transition: box-shadow var(--duration-base) var(--ease-standard),
+      transform var(--duration-base) var(--ease-standard),
+      border-color var(--duration-base) var(--ease-standard);
+  }
+  .lift:hover,
+  .lift:focus-within {
+    box-shadow: var(--shadow-lifted);
+    border-color: var(--line-strong);
+    transform: translateY(-2px);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .lift:hover,
+    .lift:focus-within {
+      transform: none;
+    }
+  }
+
+  /* Ruled rows stop being inert surfaces. */
+  .row-hover {
+    transition: background-color var(--duration-fast) var(--ease-standard);
+  }
+  .row-hover:hover {
+    background-color: var(--ground-raised);
+  }
+
+  /* The one label recipe, used everywhere. */
+  .label {
+    font-family: var(--font-mono-var), ui-monospace, monospace;
+    font-size: var(--step--2);
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  /* A quiet underline that grows from the left on hover. */
+  .link-underline {
+    position: relative;
+  }
+  .link-underline::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -2px;
+    height: 1px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--duration-base) var(--ease-out);
+  }
+  .link-underline:hover::after,
+  .link-underline:focus-visible::after {
+    transform: scaleX(1);
+  }
+
+  /* Scroll reveals exist only for users who allow motion; the noscript
+     style in the root layout un-hides them without JavaScript. */
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      opacity: 0;
+      transform: translateY(var(--reveal-distance));
+      transition: opacity var(--duration-reveal) var(--ease-out),
+        transform var(--duration-reveal) var(--ease-out);
+      transition-delay: var(--reveal-delay, 0ms);
+    }
+
+    .reveal.in {
       opacity: 1;
       transform: translateY(0);
     }
