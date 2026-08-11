@@ -209,16 +209,18 @@ export const experience: Role[] = [
     // Debug counts and the month span are deliberately absent: owner direction,
     // 2026-08-10. To have debugged something you need a bug, and that is
     // internal. "Helped identify issues" is as far as this goes.
+    // No band count: the "17 bands" figure was wrong and the owner could not
+    // source it (2026-08-11). Do not reintroduce a band count without one.
+    // PRACH is named once, in the summary. It used to appear again in the
+    // highlights, which read as padding.
     summary:
-      "System and verification modeling for multiband LTE and 5G NR O-RAN radio units. I look after the versioned golden models, downlink, uplink, low-PHY, and PRACH, that generate bit-exact RTL and fronthaul test vectors against the vendor fixed-point IP C-models for firmware sign-off, across 17 bands and carriers from 3 to 100 MHz. I also generate the 3GPP test waveforms the system test, RF test, firmware verification and software teams work from, each in the format that team uses, and help identify issues when something does not line up.",
+      "System and verification modeling for multiband LTE and 5G NR O-RAN radio units. I look after the golden models of the downlink, uplink, low-PHY, and PRACH chains: fixed-point models that run the same arithmetic as the vendor IP C-models, versioned, and used to generate the RTL and fronthaul test vectors firmware is signed off against. Carriers from 3 to 100 MHz, FDD and TDD. I also generate the 3GPP test waveforms that the system test, RF test, firmware verification, and software teams work from, each in the format that team uses, and help identify issues when something does not line up.",
     highlights: [
-      // The uplink combining work is removed everywhere: not published yet
-      // (owner, 2026-08-11). Do not reinstate it until he says it is public.
-      // No classifier, no accelerator, no check counts: the ML work is not for
-      // sharing (owner, 2026-08-11) and the harness count came off with it.
-      "An 18-channel polyphase filter bank for a spectrum-sensing O-RU, 691.2 Msps in, 18 x 38.4 Msps out; two independently built implementations proven bit-identical.",
-      "The PRACH chain model, the uplink EVM analyzer, and the fronthaul power tool live under Systems.",
-      "System modeling and standards-grounded gap analysis for 6G research.",
+      // Removed and not to be reinstated without the owner saying so: the
+      // uplink combining work (unpublished), the polyphase filter bank, and
+      // anything touching the ML work.
+      "The uplink EVM analyzer and the fronthaul power tool live under Systems.",
+      "Some early 6G: system modeling, and gap analysis against where the standards currently sit.",
     ],
   },
   {
@@ -283,7 +285,7 @@ export const systems: System[] = [
     title: "The bit-accurate models firmware is verified against",
     tag: "Modeling",
     body:
-      "Bit-accurate models of the downlink, uplink, and PRACH chains of multiband O-RAN radio units. Because the model runs the same fixed-point arithmetic as the hardware, firmware verification can compare RTL output against it stage by stage and treat any difference as a defect rather than a question of tolerance. The same models are the reference when a test team hits something unexpected on the bench: every intermediate stage is exported, so a problem can be narrowed to the stage that first disagrees. They also carry the architectural work, evaluating filter and gain structures and answering system-level questions about what a configuration will actually do before it is committed to hardware. Seventeen bands, carriers from 3 to 100 MHz, packaged as versioned executables so running them needs no MATLAB license.",
+      "Bit-accurate models of the downlink, uplink, and PRACH chains of multiband O-RAN radio units. Because the model runs the same fixed-point arithmetic as the hardware, firmware verification can compare RTL output against it stage by stage and treat any difference as a defect rather than a question of tolerance. The same models are the reference when a test team hits something unexpected on the bench: every intermediate stage is exported, so a problem can be narrowed to the stage that first disagrees. They also carry the architectural work, evaluating filter and gain structures and answering system-level questions about what a configuration will actually do before it is committed to hardware. Carriers from 3 to 100 MHz, FDD and TDD, packaged as versioned executables so running them needs no MATLAB license.",
   },
   {
     id: "prach",
@@ -313,13 +315,8 @@ export const systems: System[] = [
     body:
       "Several O-DU vendors, and they read the fronthaul standard differently. The power levels arriving on the wire differ with them, so getting the downlink right, and sometimes the uplink gain, depends on knowing what to expect rather than assuming. The system test team needs the expected level both per symbol and per tone, with the CCDF curve alongside it, and there was no quick way to load a capture and get either. This reports power from an O-RAN fronthaul PCAP per the working group measurement definitions, working out direction, numerology, MaxPRB, compression mode, and eAxC grouping from the capture itself. Written in pure Python for throughput, because the captures are large, and it will batch a folder into a spreadsheet. Command line and GUI, both packaged so nobody has to install Python to read a power number.",
   },
-  {
-    id: "filter-bank",
-    title: "Eighteen channels for a spectrum sensor",
-    tag: "Modeling",
-    body:
-      "A polyphase filter bank that splits 691.2 megasamples per second into eighteen channels for a spectrum-sensing radio unit. Two implementations were written independently and agree to the bit, which is my preferred kind of agreement.",
-  },
+  // The polyphase filter bank entry was removed 2026-08-11 at the owner's
+  // instruction, from the site and from the resume. Do not reinstate it.
   {
     id: "forge",
     title: "Forge: agents near instruments, with the limits kept outside the model",

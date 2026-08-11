@@ -35,7 +35,9 @@ export const metadata: Metadata = {
     "Massive MIMO",
     "PRACH",
     "Wireless Systems",
-    "Technical Product Manager",
+    // "Technical Product Manager" was here and came out 2026-08-11. Keywords
+    // describe what the work IS, not a role being angled for. The site is not
+    // a job application, and that includes the parts only a crawler reads.
   ],
   authors: [{ name: profile.name }],
   alternates: { canonical: "/" },
