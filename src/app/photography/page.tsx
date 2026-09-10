@@ -11,10 +11,36 @@ export const metadata: Metadata = {
   alternates: { canonical: "/photography" },
 };
 
+// The intro names the studio; the studio has a site. The dek string stays the
+// single source (it is also the page description), so the link is spliced in
+// here rather than kept as a second copy of the sentence.
+const STUDIO = "Pixel Parchment";
+const studio = photoSources.find((source) => source.label === STUDIO);
+
 export default function PhotographyPage() {
+  const intro = pageIntros.photography;
+  const [before, after] = intro.dek.split(STUDIO);
+  const dek =
+    studio && after !== undefined ? (
+      <>
+        {before}
+        <a
+          href={studio.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="link-underline text-ink"
+        >
+          {STUDIO}
+        </a>
+        {after}
+      </>
+    ) : (
+      intro.dek
+    );
+
   return (
     <>
-      <PageHeader {...pageIntros.photography} />
+      <PageHeader title={intro.title} dek={dek} />
       <section className="mx-auto max-w-6xl px-5 py-14 sm:px-8 sm:py-20">
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
           {photos.map((photo, idx) => {

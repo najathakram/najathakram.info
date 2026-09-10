@@ -182,13 +182,13 @@ export const expertise = [
     id: "oran",
     title: "O-RAN radio units",
     body:
-      "Digital front ends, crest factor reduction, EVM, PIM, and the fronthaul that carries it all: split 7-2x, eAxC, the WG4 CUS-plane. I spend most of my days here. If something about a waveform looks wrong on a spectrum analyzer, it usually becomes my afternoon.",
+      "Digital front ends, crest factor reduction, EVM, PIM, and the fronthaul that carries it all: split 7.2x, eAxC, the WG4 CUS-plane. I spend most of my days here. If something about a waveform looks wrong on a spectrum analyzer, it usually becomes my afternoon.",
   },
   // The "Machine learning" card was removed 2026-08-11 at the owner's
   // instruction: that work is not for sharing. Do not reintroduce it, and do not
   // reintroduce ML-in-radio claims anywhere else on the site either. AI in the
-  // owner's OWN products (Forge, TaxLens, Salient, RouteFlow) is a separate
-  // matter and stays.
+  // owner's OWN products (TaxLens, Salient, RouteFlow) is a separate matter and
+  // stays. Forge was removed 2026-09-09 at the owner's instruction.
 ];
 
 export type Role = {
@@ -200,43 +200,53 @@ export type Role = {
 };
 
 export const experience: Role[] = [
+  // OWNER DIRECTION 2026-09-09, superseding the 2026-08-10 minimalism above: the
+  // Experience and Systems pages now mirror the resume's bullets, fact for fact.
+  // The public-safety line still holds: no customer, operator, ODM, or program
+  // names, and vendor IP is "the vendor's" rather than a silicon brand. Still no
+  // debug counts. The facts below are the resume's (Resume/Najath Akram
+  // Resume.docx, which the owner hand-edits); change them there first.
   {
     company: "Airspan Networks",
     location: "Houston, TX",
     positions: [
-      { title: "Signal Processing Engineer", period: "2025-Present" },
+      { title: "Signal Processing Engineer", period: "Jan 2025 to present" },
     ],
-    // Debug counts and the month span are deliberately absent: owner direction,
-    // 2026-08-10. To have debugged something you need a bug, and that is
-    // internal. "Helped identify issues" is as far as this goes.
-    // No band count: the "17 bands" figure was wrong and the owner could not
-    // source it (2026-08-11). Do not reintroduce a band count without one.
-    // PRACH is named once, in the summary. It used to appear again in the
-    // highlights, which read as padding.
     summary:
-      "System and verification modeling for multiband LTE and 5G NR O-RAN radio units. I look after the golden models of the downlink, uplink, low-PHY, and PRACH chains: fixed-point models that run the same arithmetic as the vendor IP C-models, versioned, and used to generate the RTL and fronthaul test vectors firmware is signed off against. Carriers from 3 to 100 MHz, FDD and TDD. I also generate the 3GPP test waveforms that the system test, RF test, firmware verification, and software teams work from, each in the format that team uses, and help identify issues when something does not line up.",
+      "O-RAN 7.2x radio units: bit-accurate DFE and low-PHY reference modeling, FPGA IP verification, and the fronthaul test tooling the lab teams run. I own the golden models of the downlink, uplink, low-PHY, and PRACH chains, versioned and used to generate the RTL and fronthaul test vectors firmware is signed off against, and I generate the 3GPP test waveforms the system test, RF test, firmware verification, and software teams work from.",
+    // Highlights 3 and 4 used to restate the Systems entries for the power tool
+    // and the EVM analyzer almost word for word; merged into one pointer line
+    // (2026-09-09) so the depth lives in one place instead of two.
     highlights: [
-      // Removed and not to be reinstated without the owner saying so: the
-      // uplink combining work (unpublished), the polyphase filter bank, and
-      // anything touching the ML work.
-      "The uplink EVM analyzer and the fronthaul power tool live under Systems.",
-      "Some early 6G: system modeling, and gap analysis against where the standards currently sit.",
+      "I built and maintain the bit-accurate downlink and uplink DFE and low-PHY reference models that generate the RTL golden vectors, so RTL is compared bit for bit rather than to a tolerance: NR and LTE test models through IFFT and FFT, CFR, the vendor's channel-filter and mixer IP C-models, and O-RAN BFP at 8, 9, 10, 12, and 14 bits, across 3 to 100 MHz including combined-band carriers such as B28 with B20.",
+      "I built the bit-accurate PRACH receive-chain model, from the vendor's PRACH DDC and decimation through CP removal, FFT, subcarrier extraction, BFP and U-plane packing, and detection, covering every LTE format and all NR FR1 formats, long and short preambles, FDD and TDD.",
+      "The O-RAN fronthaul power and PAPR tool and the uplink EVM and PRACH analyzer, including its RU to DU full-scale alignment check, live under Systems.",
+      "I built the expected versus captured IQ comparison GUI used in bring-up: cross-correlation delay alignment, overlaid PSD and PSD difference, and dBFS power readout for hex, BFP, .mat, and raw binary captures.",
+      "I re-clocked CFR from 491.52 to 245.76 MSPS and redesigned the cancellation pulses and channel filters for 3 to 20 MHz to meet an operator's 3 MHz carrier requirement (a 3 MHz channel filter is not realizable at 30.72 MSPS), tuning cutoff and pulse length against a per-symbol constellation EVM metric rather than the vendor's RMS figure: 2.17 to 2.23% EVM at 3, 5, and 10 MHz inside ACLR and OBUE margin.",
+      "I built a multiband PIM planner that catalogs IM3, IM5, and IM7 products for multi-carrier downlink and flags uplink-band hits, checked by hand against a B71, B29, and B14 stack.",
     ],
   },
   {
     company: "Jabil",
     location: "Warren, NJ and Houston, TX",
-    // Titles and periods verified against LinkedIn 2026-08-10, which is the
-    // record a recruiter will cross-check. Jabil ran Dec 2020 to Aug 2024;
-    // Airspan started Jan 2025. Owner recalled September 2024 for the Jabil
-    // end, LinkedIn says August, LinkedIn wins.
+    // Titles verified against LinkedIn 2026-08-10. Month-level periods come from
+    // the owner's own resume edit of 2026-09-09.
     positions: [
-      { title: "Principal Wireless Systems Design Engineer", period: "2023-2024" },
-      { title: "Lead Wireless Systems Design Engineer", period: "2021-2023" },
-      { title: "Senior FPGA Design Engineer", period: "2020-2021" },
+      { title: "Principal Wireless Systems Design Engineer", period: "Dec 2023 to Aug 2024" },
+      { title: "Lead Wireless Systems Design Engineer", period: "Sep 2021 to Dec 2023" },
+      { title: "Senior FPGA Design Engineer", period: "Dec 2020 to Sep 2021" },
     ],
     summary:
-      "Four years of O-RAN radios, single band to tri band, promoted twice along the way. I ran software and firmware workstreams, defined NR implementation requirements, and wrote the architecture and implementation documents the digital design team built to. In 2022 that included CFR cancellation-pulse analysis delivered to a major OpenRAN program partner. I also spent a fair amount of time in front of customers explaining passive intermodulation, which taught me more about what a radio has to be than any specification did.",
+      "Four years of O-RAN radios, single band to tri band, promoted twice along the way. I ran software and firmware workstreams, defined NR implementation requirements, and wrote the architecture and implementation documents the digital design team built to. I also spent a fair amount of time in front of customers explaining passive intermodulation, which taught me more about what a radio has to be than any specification did.",
+    highlights: [
+      "Led the software and firmware workstreams for LTE and 5G NR O-RAN radio units from single-band to tri-band through commercial release: defined NR implementation requirements, wrote the architecture and implementation documents the digital design team built to, weighed massive MIMO and O-RAN functional-split options against implementation complexity, resources, and timelines, and briefed customers on passive intermodulation.",
+      "Primary author of the DFE System Design Documents for two radio lines, a B3 FDD radio (5 to 40 MHz) and a 100 MHz TDD radio: the interpolation chain to 983.04 MSPS, pulse-shaping filters derived from TS 38.104 guard-band rules and grouped into five classes covering thirteen bandwidths, CFR cancellation-pulse configuration, and uplink decimation and PRACH routing.",
+      "Authored the firmware implementation guides for the NR symbol phase-compensation term of TS 38.211 section 5.4 (quadrant-folded trigonometric LUT, 4097-entry table, 21-bit minimum phase accumulator, numerology-dependent parameters, since a wrong term shows up as a rotated constellation) and for RFSoC pre-emphasis (per-subcarrier 16-bit LUTs flattening pulse-shaping passband droop for 5 to 30 MHz, with the LTE and LTE plus NB-IoT edge cases per TS 38.104 section 5.7.3).",
+      "Wrote the uplink DFE receiver test plan for LTE, NR, and MSR against TS 36.141 and TS 38.141: reference sensitivity, dynamic range, in-channel and adjacent-channel selectivity, and narrowband, in-band, and out-of-band blocking, with bottom, mid, and top frequency coverage per band and VRB-offset sweeps.",
+      "Designed 8-block PRACH detection within the PRACH core's 4K-FFT limit by cascading two 4K FFTs as a filter bank with per-block phase-rotation correction, and mapped LTE and NR PRACH subcarriers onto the core's FFT sizes and decimation ratios.",
+      "Ran filter design, CFR simulation, and cancellation-pulse generation for uplink, downlink, and PRACH DFE firmware: a hard-clipper threshold sweep in 0.1 dB steps that set the 7.8 dB PAR operating point for E-TM 3.1, a first- and second-difference slew-rate detector for post-IFFT overflow, and cancellation-pulse analysis delivered to a major OpenRAN program partner in 2022.",
+      "Generated RTL stimulus vectors, integrated the vendor's hard-IP C-models, developed executable models for UVM testbenches, and wrote PCAP tooling to extract O-RAN C-plane and U-plane data for bit-accurate system modeling.",
+    ],
   },
   {
     company: "Florida International University",
@@ -273,6 +283,8 @@ export type System = {
   title: string;
   tag: string;
   body: string;
+  /** Public site for the system, where one exists. Rendered as the title link. */
+  url?: string;
 };
 
 // Every figure here traces to Resume/PROJECTS.md, which was verified against the
@@ -285,45 +297,38 @@ export const systems: System[] = [
     title: "The bit-accurate models firmware is verified against",
     tag: "Modeling",
     body:
-      "Bit-accurate models of the downlink, uplink, and PRACH chains of multiband O-RAN radio units. Because the model runs the same fixed-point arithmetic as the hardware, firmware verification can compare RTL output against it stage by stage and treat any difference as a defect rather than a question of tolerance. The same models are the reference when a test team hits something unexpected on the bench: every intermediate stage is exported, so a problem can be narrowed to the stage that first disagrees. They also carry the architectural work, evaluating filter and gain structures and answering system-level questions about what a configuration will actually do before it is committed to hardware. Carriers from 3 to 100 MHz, FDD and TDD, packaged as versioned executables so running them needs no MATLAB license.",
+      "Bit-accurate models of the downlink, uplink, low-PHY, and PRACH chains of multiband O-RAN radio units, and the source of the RTL golden vectors firmware is signed off against. NR and LTE test models run through IFFT and FFT, CFR, the same channel-filter and mixer IP C-models the FPGA uses, and O-RAN BFP compression at 8, 9, 10, 12, and 14 bits, so firmware verification can compare RTL output stage by stage and treat any difference as a defect rather than a question of tolerance. Every intermediate stage is exported, so when a test team hits something unexpected on the bench the problem can be narrowed to the stage that first disagrees. The models also carry the architectural work, evaluating filter and gain structures before a configuration is committed to hardware. Carriers from 3 to 100 MHz, FDD and TDD, including combined-band carriers such as B28 with B20, packaged as versioned executables so running them needs no MATLAB license.",
   },
   {
     id: "prach",
     title: "A PRACH receive chain covering every configuration",
     tag: "Verification",
     body:
-      "PRACH is the first thing a radio hears from a phone, and it is the most configuration-dependent chain in the receiver. The model covers LTE formats 0 to 3 and full NR FR1, long and short preambles, and all 256 configuration indices in both FDD and TDD. What makes it harder than the rest of the receive path is that very little is fixed. Preamble format, subcarrier spacing, and the occasion pattern together decide where in time and frequency a preamble is even allowed to appear, so the search window has to be derived per configuration rather than written down once. Timing has to be right to the sample, cyclic prefix and guard handling change with format, and the root sequence and cyclic shift have to be recovered without being told which ones were sent. Getting a single configuration right proves very little, which is why the model is exercised across the whole index space instead of a representative few.",
+      "PRACH is the first thing a radio hears from a phone, and it is the most configuration-dependent chain in the receiver. The model runs the whole receive chain bit-accurately, from the PRACH DDC and decimation through cyclic prefix removal, FFT, subcarrier extraction, BFP and U-plane packing, and detection, and covers LTE formats 0 to 3 and full NR FR1, long and short preambles, and all 256 configuration indices in both FDD and TDD. What makes it harder than the rest of the receive path is that very little is fixed. Preamble format, subcarrier spacing, and the occasion pattern together decide where in time and frequency a preamble is even allowed to appear, so the search window has to be derived per configuration rather than written down once. Timing has to be right to the sample, cyclic prefix and guard handling change with format, and the root sequence and cyclic shift have to be recovered without being told which ones were sent. Getting a single configuration right proves very little, which is why the model is exercised across the whole index space instead of a representative few.",
   },
   {
     id: "pim",
     title: "Predicting where intermodulation will land",
     tag: "Tooling",
     body:
-      "Passive intermodulation is far cheaper to design around than to find later. Once a radio is built, a product falling in its own uplink band presents as a sensitivity problem that looks like several other faults, and tracing it back to the mixing that caused it is slow work. This enumerates third, fifth, and seventh order products across a 46-band catalog and flags any that land in an uplink band, for the mixing topologies of single, dual, and tri-band radios. It uses corner-evaluation interval arithmetic, so the reported hit ranges are exact across the band edges rather than sampled at a few frequencies and assumed representative. The use is band-combination planning: combinations can be ruled in or out before anyone commits to a filter plan. Products are ranked in dBc, and the power figures are relative rather than calibrated, which the tool states plainly.",
+      "Passive intermodulation is far cheaper to design around than to find later. Once a radio is built, a product falling in its own uplink band presents as a sensitivity problem that looks like several other faults, and tracing it back to the mixing that caused it is slow work. This enumerates third, fifth, and seventh order products across a 46-band catalog and flags any that land in an uplink band, for the mixing topologies of single, dual, and tri-band radios. It uses corner-evaluation interval arithmetic, so the reported hit ranges are exact across the band edges rather than sampled at a few frequencies and assumed representative. The use is band-combination planning: combinations can be ruled in or out before anyone commits to a filter plan. Products are ranked in dBc, and the power figures are relative rather than calibrated, which the tool states plainly. The catalog was checked by hand against a B71, B29, and B14 stack before anyone trusted it.",
   },
   {
     id: "ul-test-tool",
     title: "Uplink EVM without an instrument license",
     tag: "Tooling",
     body:
-      "The radio unit does not do channel estimation or equalization, so measuring uplink quality means demodulating the fronthaul capture somewhere else. That is normally a Keysight vector signal analyzer, and the licenses cost enough that there are only ever a few seats to share. Most of the people waiting for one do not need a vector signal analyzer. They need to open a PCAP, find the uplink fronthaul data going from the O-RU to the O-DU, demodulate it, and read an EVM. This does that and stops there, as a standalone executable with no license attached, for both uncompressed and block-floating-point compressed data. The instrument seats stay free for the work that genuinely needs them.",
+      "The radio unit does not do channel estimation or equalization, so measuring uplink quality means demodulating the fronthaul capture somewhere else. That is normally a Keysight 89600 vector signal analyzer, and the licenses cost enough that there are only ever a few seats to share. Most of the people waiting for one need to open a PCAP, find the uplink data going from the O-RU to the O-DU, demodulate it, and read an EVM. This does that as a standalone executable with no license attached: PUSCH and PRACH demodulated straight from 7.2x U-plane captures, uncompressed or block-floating-point compressed, with result views aligned to the VSA so the two can be read side by side. It also settles a recurring interop argument. An RU to DU full-scale alignment check emulates the DU's fixed-point ingest (shift, container width, wrap or saturate) against the per-PRB BFP exponents in the capture and returns a pass or fail that separates a radio misconfiguration from a DU ingest error. The instrument seats stay free for the work that needs them.",
   },
   {
     id: "power-tool",
     title: "Fronthaul power, read straight off a capture",
     tag: "Tooling",
     body:
-      "Several O-DU vendors, and they read the fronthaul standard differently. The power levels arriving on the wire differ with them, so getting the downlink right, and sometimes the uplink gain, depends on knowing what to expect rather than assuming. The system test team needs the expected level both per symbol and per tone, with the CCDF curve alongside it, and there was no quick way to load a capture and get either. This reports power from an O-RAN fronthaul PCAP per the working group measurement definitions, working out direction, numerology, MaxPRB, compression mode, and eAxC grouping from the capture itself. Written in pure Python for throughput, because the captures are large, and it will batch a folder into a spreadsheet. Command line and GUI, both packaged so nobody has to install Python to read a power number.",
+      "Several O-DU vendors, and they read the fronthaul standard differently. The power levels arriving on the wire differ with them, so getting the downlink right, and sometimes the uplink gain, depends on knowing what to expect rather than assuming. This reports per-eAxC dBFS power from an O-RAN fronthaul PCAP per the WG4 CUS-plane measurement definitions, with grid-domain PAR, per-tone PAR, and oversampled time-domain PAPR for the uplink kept as separate numbers, because they answer different questions. Direction, numerology, BFP width, and the eAxC bit split are worked out from the capture itself, and the compressed-domain full-scale reference is derived per section 8.1.3.1 rather than assumed. Shipped as MATLAB Compiler GUI and command-line executables, and as a Python version that batches a folder of captures into a spreadsheet, so nobody has to install MATLAB or Python to read a power number.",
   },
   // The polyphase filter bank entry was removed 2026-08-11 at the owner's
   // instruction, from the site and from the resume. Do not reinstate it.
-  {
-    id: "forge",
-    title: "Forge: agents near instruments, with the limits kept outside the model",
-    tag: "R&D",
-    body:
-      "An agent that can drive test instruments and read specifications is genuinely useful in a lab, and is also one careless tool call away from mis-configuring hardware or asserting something a specification does not say. The usual answer is to write the guardrails into the prompt, which makes the thing being constrained also the thing enforcing the constraint. Forge keeps them outside it. Machine-checkable limits are compiled out of the 3GPP specification documents themselves, each carrying its clause, a source hash, and a review status, so a claim can be traced back to the sentence it came from. Instruments are reachable only through a typed control server, so an out-of-range setting cannot be expressed in the first place. The side that judges the work and the side that does it run under separate permission profiles, the settings carry a tamper alarm, and no completion claim is accepted until a person countersigns it. What that buys over a well-prompted agent is that the limits, the provenance, and the sign-off all survive the model being wrong.",
-  },
   {
     id: "taxlens",
     title: "TaxLens: rebuilding a year of books from the statements",
@@ -342,6 +347,7 @@ export const systems: System[] = [
     id: "routeflow",
     title: "RouteFlow: one system for a wholesale distribution business",
     tag: "Software",
+    url: "https://www.routeflow.info",
     body:
       "Wholesale distribution needs inventory, costing, supply chain, orders, taxes, regulated-item sales, bookkeeping, and delivery route management, and there are very few systems that cover all of that rather than most of it. Running four tools instead means the numbers never quite agree. RouteFlow is the whole set in one place, and it works from both ends: the distributor runs catalog, orders, driver routes with proof of delivery, and compliance filings, while the retail shops order from all of their suppliers through the same platform instead of a separate portal for each. Inventory transfers straight through a sale, supplier invoices are scanned rather than typed, and one item can carry separate wholesale and retail SKUs. The problem underneath it is that a growing small business often cannot say what it is actually making, because the transactions and the expenses live in different places and never get added up in one view. AI does the parts that are judgment rather than arithmetic: reading a scanned invoice into line items, matching them to catalog products, and categorizing expenses so the profit figure is built from everything instead of from whatever got entered. Tenant isolation sits at the database layer, where an extension injects the tenant into every query and write rather than trusting each developer to remember.",
   },

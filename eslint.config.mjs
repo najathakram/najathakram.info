@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Resume generator scripts: gitignored, plain Node, not part of the site.
+    "Resume/**",
   ]),
 ]);
 

@@ -31,7 +31,18 @@ export default function SystemsPage() {
             >
               <div className="grid grid-cols-[minmax(0,1fr)_auto] items-baseline gap-x-6">
                 <h2 className="text-[length:var(--step-2)] font-medium text-ink">
-                  {item.title}
+                  {item.url ? (
+                    <a
+                      href={item.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="link-underline"
+                    >
+                      {item.title}
+                    </a>
+                  ) : (
+                    item.title
+                  )}
                 </h2>
                 <span className="label shrink-0">{item.tag}</span>
               </div>

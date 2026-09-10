@@ -1,6 +1,7 @@
 type Props = {
   title: string;
-  dek?: string;
+  /** Plain text normally; a fragment when a phrase in it needs a link. */
+  dek?: React.ReactNode;
 };
 
 /**

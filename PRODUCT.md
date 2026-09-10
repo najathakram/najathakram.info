@@ -39,16 +39,18 @@ without ever self-labeling, and it survives a skeptic who checks the numbers.
   units. 29 production debug engagements taken to root cause since joining.
 - Previously Jabil: Senior FPGA Engineer to Lead to Principal Design Engineer in four years.
   Wrote the architecture and implementation documents the digital design team built to.
-- PhD, Florida International University. Nine IEEE publications, an AFRL technical report, and
-  a dissertation. Reduced-ADC array receivers: one ADC per four antennas at 28 GHz, and half
-  the count again for 2D arrays.
-- Tools with real users: a fronthaul power analyzer verified to 0.000 dB against an
-  independent oracle and packaged as a standalone executable for lab teams; a 386-check PRACH
-  verification harness.
-- AI systems with governance, not demos: an agent-rebuilt analyzer whose every result is
-  pinned within 0.05 dB of MATLAB ground truth; TaxLense (evidence tiers, append-only audit
-  ledger, per-call cost tracking); AGOS, a policy-gated agent framework running real revenue
-  operations for the studio; RouteFlow; Salient.
+- PhD, Florida International University. 10+ IEEE publications, an AFRL technical report,
+  and a dissertation (owner directive 2026-09-09: state the count as "10+", never the exact
+  number). Reduced-ADC array receivers: one ADC per four antennas at 28 GHz, and half the
+  count again for 2D arrays.
+- Tools with real users: an O-RAN fronthaul power and PAPR tool (MATLAB Compiler GUI and CLI
+  executables plus a Python version) and an uplink EVM and PRACH analyzer with an RU to DU
+  full-scale alignment check, both standalone so lab teams need no instrument or MATLAB
+  license; a bit-accurate PRACH model covering every LTE and NR FR1 format.
+- AI systems with governance, not demos: TaxLens (IRS citations, evidence ratings, confidence
+  scores, hashed and locked ledger steps); Salient (pre-authored case data, a diagnosis leak
+  guard, cost controls at every step); RouteFlow (routeflow.info). Forge and AGOS were removed
+  from the site at the owner's instruction (2026-09-09 and 2026-08-11).
 - Writes Sinhala song lyrics recorded by named artists. Co-owns Pixel Parchment with his wife
   Maznah. Photographs weddings, nature, and cities.
 - Founded a Toastmasters club at the University of Ruhuna that grew past 200 members;
