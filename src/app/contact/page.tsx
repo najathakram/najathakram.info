@@ -48,11 +48,8 @@ export default function ContactPage() {
           >
             Google Scholar
           </a>
-          <a href={profile.resumes.product} className="link-underline text-ink">
+          <a href={profile.resume} className="link-underline text-ink">
             Resume (PDF)
-          </a>
-          <a href={profile.resumes.technical} className="link-underline text-ink">
-            Technical variant (PDF)
           </a>
         </div>
 

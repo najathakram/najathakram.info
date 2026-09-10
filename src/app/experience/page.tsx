@@ -69,11 +69,8 @@ export default function ExperiencePage() {
         </div>
 
         <div className="mt-12 flex flex-wrap gap-x-8 gap-y-2 border-t border-line pt-8">
-          <a href={profile.resumes.product} className="link-underline text-ink">
+          <a href={profile.resume} className="link-underline text-ink">
             Resume (PDF)
-          </a>
-          <a href={profile.resumes.technical} className="link-underline text-ink">
-            Technical variant (PDF)
           </a>
         </div>
       </section>

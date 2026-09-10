@@ -6,7 +6,7 @@ const reach = [
   { label: "LinkedIn", href: profile.linkedin },
   { label: "IEEE Xplore", href: profile.ieee },
   { label: "Google Scholar", href: profile.scholar },
-  { label: "Resume (PDF)", href: profile.resumes.product },
+  { label: "Resume (PDF)", href: profile.resume },
 ];
 
 export function SiteFooter() {

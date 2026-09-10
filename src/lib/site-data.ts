@@ -94,12 +94,14 @@ export const profile = {
   // plain statement of what the work is, with no ask attached.
   openTo:
     "Most of the work here sits between signal processing and the radios that have to carry it.",
-  // Percent-encoded: the served filename deliberately contains spaces so the
-  // download lands as "Najath Akram Resume.pdf" for both variants.
-  resumes: {
-    product: "/resume/product/Najath%20Akram%20Resume.pdf",
-    technical: "/resume/technical/Najath%20Akram%20Resume.pdf",
-  },
+  // OWNER DIRECTION 2026-09-10: one resume on the site, and it is the one at
+  // Resume/Najath Akram Resume.pdf. The product variant (Resume/Najath Akram
+  // Resume - Product.pdf) is NOT to be served here; the /resume/product/ and
+  // /resume/technical/ paths were removed with it. Copy the built PDF to
+  // public/resume/ after any resume edit. Percent-encoded because the served
+  // filename deliberately keeps its spaces, so the download lands as
+  // "Najath Akram Resume.pdf".
+  resume: "/resume/Najath%20Akram%20Resume.pdf",
 };
 
 // The landing moment. Short on purpose: a headline someone remembers, one line
@@ -237,7 +239,7 @@ export const experience: Role[] = [
       { title: "Senior FPGA Design Engineer", period: "Dec 2020 to Sep 2021" },
     ],
     summary:
-      "Four years of O-RAN radios, single band to tri band, promoted twice along the way. I ran software and firmware workstreams, defined NR implementation requirements, and wrote the architecture and implementation documents the digital design team built to. I also spent a fair amount of time in front of customers explaining passive intermodulation, which taught me more about what a radio has to be than any specification did.",
+      "Four years of O-RAN radios, single band to tri band. I ran software and firmware workstreams, defined NR implementation requirements, and wrote the architecture and implementation documents the digital design team built to. I also spent a fair amount of time in front of customers explaining passive intermodulation, which taught me more about what a radio has to be than any specification did.",
     highlights: [
       "Led the software and firmware workstreams for LTE and 5G NR O-RAN radio units from single-band to tri-band through commercial release: defined NR implementation requirements, wrote the architecture and implementation documents the digital design team built to, weighed massive MIMO and O-RAN functional-split options against implementation complexity, resources, and timelines, and briefed customers on passive intermodulation.",
       "Primary author of the DFE System Design Documents for two radio lines, a B3 FDD radio (5 to 40 MHz) and a 100 MHz TDD radio: the interpolation chain to 983.04 MSPS, pulse-shaping filters derived from TS 38.104 guard-band rules and grouped into five classes covering thirteen bandwidths, CFR cancellation-pulse configuration, and uplink decimation and PRACH routing.",
