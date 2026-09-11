@@ -160,17 +160,21 @@ export const focusAreas = [
 // give. That is the correct trade, because winning a hiring funnel is not what
 // this site is for.
 export const about: string[] = [
-  "Hello. I'm Najath. Ten years in radio, the last six shipping O-RAN radio units. A PhD at Florida International University first, then four years that took me from senior engineer to lead to principal, and I have stayed close to the same seam since.",
-  "The work lives somewhere between math and hardware. Most of my days are spent in MATLAB, in front of a spectrum analyzer, or in a document describing why a particular combination of frequencies decided to interfere with itself.",
-  // The waveform-formats paragraph was removed 2026-08-10 at the owner's
-  // instruction, and the reason generalises: you do not write about your
-  // day-to-day job on a personal website. The resume covers the job. This site
-  // is what he is outside of it. Do not reintroduce employer task descriptions
-  // here, however well they read.
+  // OWNER DIRECTION 2026-09-11. Register: fluent, senior, technical. Authority
+  // comes from what the work is depended on for, never from titles or adjectives.
   //
-  // Second paragraph rewritten to open independently: it used to begin "Some of
-  // that", which referred to the deleted paragraph and would have dangled.
-  "A fair amount of what I build now has AI agents in the loop, which changed how much I write and not one thing about what I trust. The verification came first and the agents arrived later: independent decoders that re-read every exported byte off disk, and mutation tests that plant faults to prove the checks can actually see them.",
+  // Two rejected rewrites, so the failure modes are on record:
+  //   1. Promotions and title ladders ("senior engineer to lead to principal").
+  //      "Who cares about promotions?" Titles stay plain facts in `experience`.
+  //   2. Cute personification ("persuading four antennas to share one converter",
+  //      agents that "type faster and with more confidence"). Rejected as cringy.
+  // The third failure was prose that read translated: "ten years in radio" (radio
+  // is broadcasting; the field is wireless), "the same seam", "in a document
+  // describing", uncontracted "I have stayed". Keep the English plain and native:
+  // active voice, precise domain nouns used casually, no strained metaphor.
+  "I'm Najath. Ten years in wireless, the last six on O-RAN radio units. Before that, a PhD at Florida International University on receivers that get by with a quarter of the converters.",
+  "Most of what I do sits between the math and the hardware: the reference models firmware is signed off against, the documents other people build from, and the tooling that proves the checks themselves work.",
+  "A fair amount of what I build now has AI agents in it. They changed how much code I write and nothing about what I trust. Independent decoders re-read every exported byte off disk, and mutation tests plant faults to prove the checks can catch them.",
 ];
 
 export const expertise = [
