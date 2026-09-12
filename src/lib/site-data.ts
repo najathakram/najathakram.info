@@ -502,6 +502,8 @@ export const publications: Publication[] = [
       "PhD dissertation, Florida International University. Degree conferred 2020, published 2021.",
     year: "2021",
     type: "Dissertation",
+    // FIU Digital Scholarship record, owner-supplied 2026-09-11.
+    url: "https://digitalscholarship.fiu.edu/record/13226?ln=en&v=pdf",
   },
   {
     id: "afrl-report",
